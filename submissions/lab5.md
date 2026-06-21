@@ -12,11 +12,13 @@ https://github.com/fifidadan/SRE-Intro/actions/runs/27895106718
 
 ### Output of `gh api user/packages?package_type=container` showing pushed images
 
-*(insert screenshot with 3 pushed images)*
+<img width="1910" height="550" alt="Снимок экрана 2026-06-21 135443" src="https://github.com/user-attachments/assets/7648303d-55d4-4338-9693-a3baa2f598d2" />
+
 
 ### Output of `argocd app get quickticket` showing Synced + Healthy
 
-*(insert screenshot showing Synced + Healthy)*
+<img width="1911" height="1097" alt="Снимок экрана 2026-06-21 141945" src="https://github.com/user-attachments/assets/df8836e3-e7f3-4aab-8a9c-fe002821f327" />
+
 
 ### Output proving a Git change was synced (label, annotation, or image tag change visible in cluster)
 
@@ -40,7 +42,9 @@ This happens because ArgoCD continuously reconciles the cluster state with the d
 
 ### argocd app get showing Degraded after bad deploy
 
-*(insert screenshot showing Degraded status)*
+
+<img width="1642" height="1037" alt="Снимок экрана 2026-06-21 145010" src="https://github.com/user-attachments/assets/a092ad19-0558-4674-8a95-2932121d2132" />
+
 
 ### kubectl get pods showing ImagePullBackOff
 
@@ -85,7 +89,9 @@ postgres-7c7ffc4b-49lgc     1/1     Running   5 (173m ago)   4d
 redis-c46d5dffc-7jwwd       1/1     Running   5 (173m ago)   4d
 ```
 
-*(insert screenshot showing Healthy status after revert)*
+
+<img width="1905" height="1091" alt="Снимок экрана 2026-06-21 154100" src="https://github.com/user-attachments/assets/3c5c2db5-ef93-41e0-84b9-18351a39dbd2" />
+
 
 ### Answer: "How long from git revert + push to pods being healthy again?"
 
