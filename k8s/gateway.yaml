@@ -12,10 +12,12 @@ spec:
       labels:
         app: gateway
     spec:
+      imagePullSecrets:
+        - name: ghcr-secret
       containers:
         - name: gateway
-          image: quickticket-gateway:v1
-          imagePullPolicy: Never
+          image: ghcr.io/fifidadan/quickticket-gateway:05b3027
+          imagePullPolicy: Always
           ports:
             - containerPort: 8080
           env:
