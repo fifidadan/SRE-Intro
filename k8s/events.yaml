@@ -16,7 +16,7 @@ spec:
         - name: ghcr-secret
       containers:
         - name: events
-          image: ghcr.io/fifidadan/quickticket-events:05b3027
+          image: ghcr.io/fifidadan/quickticket-events:39978096228751ec340c5aaa568f6495a2d1e37f
           imagePullPolicy: Always
           ports:
             - containerPort: 8081
