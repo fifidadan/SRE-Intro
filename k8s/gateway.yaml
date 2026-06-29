@@ -19,7 +19,7 @@ spec:
         - name: ghcr-secret
       containers:
         - name: gateway
-          image: ghcr.io/fifidadan/quickticket-gateway:bef8aa42d47d05a3b915b9b404a925109ccd1e97
+          image: ghcr.io/fifidadan/quickticket-gateway:8604770ddddf34d40922d8003f7c931a962b0885
           imagePullPolicy: Always
           ports:
             - containerPort: 8080
