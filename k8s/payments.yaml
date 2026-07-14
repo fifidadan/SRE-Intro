@@ -16,7 +16,7 @@ spec:
         - name: ghcr-secret
       containers:
         - name: payments
-          image: ghcr.io/fifidadan/quickticket-payments:3e2d346220c8484de916a8b9a3adedd71bd495e8
+          image: ghcr.io/fifidadan/quickticket-payments:67abf0853fc8ad2477874ffb27f4f356af25bafc
           imagePullPolicy: Always
           ports:
             - containerPort: 8082
