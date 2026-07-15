@@ -12,13 +12,6 @@ spec:
       steps:
         - setWeight: 20
         - pause: {duration: 20s}
-        - analysis:
-            templates:
-              - templateName: gateway-error-rate
-            args:
-              - name: canary-hash
-                valueFrom:
-                  podTemplateHashValue: Latest
         - setWeight: 50
         - pause: {duration: 20s}
         - setWeight: 100
@@ -30,12 +23,22 @@ spec:
       labels:
         app: gateway
     spec:
-      imagePullSecrets:
-        - name: ghcr-secret
+      terminationGracePeriodSeconds: 40
+      topologySpreadConstraints:
+        - maxSkew: 1
+          topologyKey: kubernetes.io/hostname
+          whenUnsatisfiable: ScheduleAnyway
+          labelSelector:
+            matchLabels:
+              app: gateway
       containers:
         - name: gateway
-          image: ghcr.io/fifidadan/quickticket-gateway:f763451e54bd783231c38320126bb96341603324
-          imagePullPolicy: Always
+          image: quickticket-gateway:latest
+          imagePullPolicy: Never
+          lifecycle:
+            preStop:
+              exec:
+                command: ["sh", "-c", "sleep 10"]
           ports:
             - containerPort: 8080
           env:
@@ -44,9 +47,11 @@ spec:
             - name: PAYMENTS_URL
               value: "http://payments:8082"
             - name: GATEWAY_TIMEOUT_MS
-              value: "5000"
+              value: "10000"
             - name: APP_VERSION
               value: "v6"
+            - name: NOTIFICATIONS_URL
+              value: "http://notifications:8083"
           livenessProbe:
             httpGet:
               path: /health
@@ -58,8 +63,8 @@ spec:
             httpGet:
               path: /health
               port: 8080
-            periodSeconds: 5
-            failureThreshold: 2
+            periodSeconds: 2
+            failureThreshold: 1
           resources:
             requests:
               cpu: 50m
